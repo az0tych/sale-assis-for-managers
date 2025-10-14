@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2><i class="fas fa-address-book me-3"></i>Справочник контактов</h2>
+  <div class="d-flex">
+    <a href="{{ url_for('routes.add_contact') }}" class="btn btn-primary me-2">
+      <i class="fas fa-plus-circle me-1"></i>Добавить
+    </a>
+    <a href="{{ url_for('routes.upload_contacts') }}" class="btn btn-outline-primary">
+      <i class="fas fa-file-import me-1"></i>Загрузить CSV
+    </a>
+  </div>
+</div>
+
+{% if contacts %}
+<div class="card">
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Компания</th>
+            <th>Заметки</th>
+            <th class="text-end">Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in contacts %}
+          <tr>
+            <td class="fw-medium">{{ c.name }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.company or '-' }}</td>
+            <td>{{ c.notes or '-' }}</td>
+            <td class="text-end">
+              <div class="btn-group">
+                <a href="{{ url_for('routes.generate_email', contact_id=c.id) }}"
+                   class="btn btn-sm btn-success">
+                  <i class="fas fa-envelope me-1"></i>Письмо
+                </a>
+                <a href="{{ url_for('routes.edit_contact', contact_id=c.id) }}" class="btn btn-sm btn-outline-secondary">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="card">
+  <div class="card-body text-center py-5">
+    <i class="fas fa-address-book fa-4x text-muted mb-4"></i>
+    <h4>Список контактов пуст</h4>
+    <p class="text-muted">Добавьте свой первый контакт, чтобы начать работу</p>
+    <a href="{{ url_for('routes.add_contact') }}" class="btn btn-primary mt-2">
+      <i class="fas fa-plus-circle me-1"></i>Добавить контакт
+    </a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2>Загрузить контакты из CSV</h2>
+<form method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label class="form-label">CSV-файл</label>
+    <input type="file" class="form-control" name="file" accept=".csv" required>
+    <div class="form-text">
+      Формат CSV: заголовки <code>name,email,company,notes</code>.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Загрузить</button>
+  <a href="{{ url_for('routes.contacts') }}" class="btn btn-link">Отмена</a>
+</form>
+{% endblock %}

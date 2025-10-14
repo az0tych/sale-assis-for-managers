@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2>Добавить контакт</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">Имя</label>
+    <input type="text" class="form-control" name="name" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Компания</label>
+    <input type="text" class="form-control" name="company">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Заметки</label>
+    <textarea class="form-control" name="notes" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Сохранить</button>
+  <a href="{{ url_for('routes.contacts') }}" class="btn btn-link">Отмена</a>
+</form>
+{% endblock %}

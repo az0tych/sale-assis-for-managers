@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="dashboard-card">
+  <h1><i class="fas fa-hand-wave me-3"></i>Добро пожаловать, {{ current_user.name or current_user.email }}!</h1>
+  <p>Ваш персональный помощник для эффективных продаж и коммуникаций</p>
+  <div class="action-buttons">
+    <a href="{{ url_for('routes.contacts') }}" class="btn btn-light">
+      <i class="fas fa-address-book me-2"></i>Мои контакты
+    </a>
+    <a href="{{ url_for('routes.settings') }}" class="btn btn-outline-light">
+      <i class="fas fa-cog me-2"></i>Настройки
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+        <h5 class="card-title">Управление контактами</h5>
+        <p class="card-text">Добавляйте, редактируйте и организуйте ваши контакты</p>
+        <a href="{{ url_for('routes.contacts') }}" class="btn btn-outline-primary">Перейти</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="fas fa-mail-bulk fa-3x text-success mb-3"></i>
+        <h5 class="card-title">Персонализированные письма</h5>
+        <p class="card-text">Создавайте персонализированные письма для ваших клиентов</p>
+        <a href="{{ url_for('routes.contacts') }}" class="btn btn-outline-success">Создать</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="fas fa-cog me-2 fa-3x text-info mb-3"></i>
+        <h5 class="card-title">Настройка аккаунта</h5>
+        <p class="card-text">Настройте информацию о себе и компании, выберете способ отправки писем</p>
+        <a href="{{ url_for('routes.settings') }}" class="btn btn-outline-info">Изменить</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-lg-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
+        <h5 class="card-title">Аналитика и отчеты</h5>
+        <p class="card-text">Отслеживайте эффективность ваших коммуникаций</p>
+        <a href="#" class="btn btn-outline-info">Просмотреть</a>
+      </div>
+    </div>
+  </div> -->
+</div>
+{% endblock %}
